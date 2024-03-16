@@ -1,3 +1,4 @@
+-- Active: 1709940367650@@dbtavinho.mysql.database.azure.com@3306@estoque
 DROP DATABASE estoque;
 -- criando banco de dados
 create database estoque;
@@ -67,3 +68,16 @@ select * from tbProduto;
 select * from tbVendedor;
 select * from tbPedido;
 select * from tbItemPedido;
+
+-- Faz uma copia da table, para não mexer na tabela da empresa 
+create table tbCopia_tbCliente as select * from tbCliente;
+
+-- Muda o nome da Coluna
+alter table tbCliente rename column nome to nome_Cli;
+
+-- Muda o valor da coluna / o primeiro cep é para puxar a coluna e o segunda se quiser alterar o nome e depois o valor  
+alter table tbCliente change cep cep int(11);
+
+-- Apaga um coluna 
+alter table tbCopia_tbCliente drop column uf;
+
