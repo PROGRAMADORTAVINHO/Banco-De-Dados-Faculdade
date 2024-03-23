@@ -113,12 +113,13 @@ select * from tbFuncionario;
 select * from tbConsulta;
 
 # Cria uma Coluna na Tabela desejada
-ALTER TABLE tbFuncionario ADD COLUMN nroa int;
+ALTER TABLE tbFuncionario ADD COLUMN nroa int; # Crie a coluna nroa (int) na tabela Funcionarios
+
 # Transforma uma Coluna em Chave Estrangeira
 ALTER TABLE tbFuncionario ADD Foreign Key (nroa) REFERENCES tbAmbulatorio(nroa);
 
 # Apaga um coluna 
-alter table tbFuncionario drop column cargo;
+alter table tbFuncionario drop column cargo; # Remover a coluna cargo da tabela de Funcionarios
 
 # Realizar as seguintes atualizações no BD
 # 1) O paciente Paulo mudou-se para Ilhota
@@ -136,7 +137,7 @@ delete from tbConsulta where hora > "19:00";
 # 7) Os pacientes com câncer ou idade inferior a 10 anos deixaram a clínica
 delete from tbPaciente WHERE doenca = "cancer" or idade < 10;
 # 8) Os médicos que residem em Biguacu e Palhoca deixaram a clínica
-delete from tbMedico WHERE cidade = "Biguacu" or cidade = "Palhoca"; 
+delete from tbMedico WHERE cidade in ("Biguacu", "Palhoca"); 
 
 -- Vizualizador
 select * from tbAmbulatorio;
